@@ -1,0 +1,195 @@
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vivado/2018.1/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'Anh' on host 'anhvu' (Windows NT_amd64 version 6.2) on Thu Nov 21 18:26:53 +0700 2024
+INFO: [HLS 200-10] In directory 'D:/Programming/Hardware/lab2'
+INFO: [HLS 200-10] Opening project 'D:/Programming/Hardware/lab2/yuv_filter.prj'.
+INFO: [HLS 200-10] Adding design file 'yuv_filter.c' to the project
+INFO: [HLS 200-10] Adding test bench file 'test_data' to the project
+INFO: [HLS 200-10] Adding test bench file 'yuv_filter_test.c' to the project
+INFO: [HLS 200-10] Adding test bench file 'image_aux.c' to the project
+INFO: [HLS 200INFO: [Common 17-206] Exiting vivado_hls at Thu Nov 21 18:29:10 2024...
+on3'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020clg484-1'
+INFO: [XFORM 203-701] Set default FIFO size in dataflow to 2.
+INFO: [XFORM 203-701] Set the default channel type in dataflow to FIFO.
+INFO: [XFORM 203-701] Set default FIFO size in dataflow to 2.
+INFO: [XFORM 203-701] Set the default channel type in dataflow to FIFO.
+INFO: [HLS 200-10] Analyzing design file 'yuv_filter.c' ...
+INFO: [HLS 200-10] Validating synthesis directives ...
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 101.688 ; gain = 44.688
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 101.703 ; gain = 44.703
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 103.484 ; gain = 46.484
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 104.012 ; gain = 47.012
+WARNING: [XFORM 203-713] All the elements of global array '_yuv.channels.ch1' should be updated in process function 'rgb2yuv11', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array '_yuv.channels.ch2' should be updated in process function 'rgb2yuv11', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array '_yuv.channels.ch3' should be updated in process function 'rgb2yuv11', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array '_scale.channels.ch1' should be updated in process function 'yuv_scale', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array '_scale.channels.ch2' should be updated in process function 'yuv_scale', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array '_scale.channels.ch3' should be updated in process function 'yuv_scale', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'out.channels.ch1' should be updated in process function 'yuv2rgb', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'out.channels.ch2' should be updated in process function 'yuv2rgb', otherwise it may not be synthesized correctly.
+WARNING: [XFORM 203-713] All the elements of global array 'out.channels.ch3' should be updated in process function 'yuv2rgb', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'yuv_filter', detected/extracted 3 process function(s): 
+	 'rgb2yuv11'
+	 'yuv_scale'
+	 'yuv2rgb'.
+WARNING: [XFORM 203-124] Array  '_scale.channels.ch3': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  '_scale.channels.ch2': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  '_scale.channels.ch1': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  '_yuv.channels.ch3': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  '_yuv.channels.ch2': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+WARNING: [XFORM 203-124] Array  '_yuv.channels.ch1': may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (yuv_filter.c:92:33) to (yuv_filter.c:92:27) in function 'yuv2rgb'... converting 7 basic blocks.
+INFO: [XFORM 203-11] Balancing expressions in function 'rgb2yuv11' (yuv_filter.c:43:27)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 124.762 ; gain = 67.762
+INFO: [XFORM 203-541] Flattening a loop nest 'YUV_SCALE_LOOP_X' (yuv_filter.c:129:29) in function 'yuv_scale'.
+INFO: [XFORM 203-541] Flattening a loop nest 'YUV2RGB_LOOP_X' (yuv_filter.c:89:29) in function 'yuv2rgb'.
+INFO: [XFORM 203-541] Flattening a loop nest 'RGB2YUV_LOOP_X' (yuv_filter.c:49:29) in function 'rgb2yuv11'.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:02 ; elapsed = 00:00:11 . Memory (MB): peak = 147.344 ; gain = 90.344
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'yuv_filter' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'rgb2yuv11'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'RGB2YUV_LOOP_X_RGB2YUV_LOOP_Y'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 7.
+WARNING: [SCHED 204-21] Estimated clock period (11.004ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path consists of the following:
+	'mul' operation ('tmp_52_i_i', yuv_filter.c:58) (3.36 ns)
+	'add' operation ('tmp_56_i_i', yuv_filter.c:58) (3.02 ns)
+	'xor' operation ('U', yuv_filter.c:58) (0.99 ns)
+	fifo write on port 'out_channels_ch2' (yuv_filter.c:61) (3.63 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 11.777 seconds; current allocated memory: 106.540 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.16 seconds; current allocated memory: 106.982 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'yuv_scale'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'YUV_SCALE_LOOP_X_YUV_SCALE_LOOP_Y'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.677 seconds; current allocated memory: 107.168 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.123 seconds; current allocated memory: 107.385 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'yuv2rgb'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'YUV2RGB_LOOP_X_YUV2RGB_LOOP_Y'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
+WARNING: [SCHED 204-21] Estimated clock period (10.8949ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path consists of the following:
+	'add' operation ('C', yuv_filter.c:97) (0 ns)
+	'mul' operation ('tmp_3', yuv_filter.c:100) (3.36 ns)
+	'add' operation ('tmp_5', yuv_filter.c:100) (3.02 ns)
+	'add' operation ('tmp_19', yuv_filter.c:102) (2.14 ns)
+	'icmp' operation ('icmp2', yuv_filter.c:102) (1.13 ns)
+	'or' operation ('tmp_22', yuv_filter.c:102) (0 ns)
+	'select' operation ('B', yuv_filter.c:102) (1.25 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.406 seconds; current allocated memory: 107.740 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.148 seconds; current allocated memory: 108.092 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'yuv_filter'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.186 seconds; current allocated memory: 108.271 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.159 seconds; current allocated memory: 108.610 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'rgb2yuv11'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mul_mul_16ns_16ns_32_1_1' to 'yuv_filter_mul_mubkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mac_muladd_6ns_8ns_8ns_13_1_1' to 'yuv_filter_mac_mucud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mac_muladd_7s_8ns_9ns_15_1_1' to 'yuv_filter_mac_mudEe' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mac_muladd_8ns_8ns_9ns_15_1_1' to 'yuv_filter_mac_mueOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mac_muladd_8s_8ns_16ns_16_1_1' to 'yuv_filter_mac_mufYi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mac_mucud': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mac_mudEe': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mac_mueOg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mac_mufYi': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mul_mubkb': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'rgb2yuv11'.
+INFO: [HLS 200-111]  Elapsed time: 0.358 seconds; current allocated memory: 109.422 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'yuv_scale'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mul_mubkb': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'yuv_scale'.
+INFO: [HLS 200-111]  Elapsed time: 0.365 seconds; current allocated memory: 110.026 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'yuv2rgb'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_ama_addmuladd_5s_8ns_10s_9s_18_1_1' to 'yuv_filter_ama_adg8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mac_muladd_10s_8s_18s_18_1_1' to 'yuv_filter_mac_muhbi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'yuv_filter_mac_muladd_8s_8s_17ns_17_1_1' to 'yuv_filter_mac_muibs' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_ama_adg8j': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mac_muhbi': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mac_muibs': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'yuv_filter_mul_mubkb': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'yuv2rgb'.
+INFO: [HLS 200-111]  Elapsed time: 0.353 seconds; current allocated memory: 110.839 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'yuv_filter'
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/in_channels_ch1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/in_channels_ch2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/in_channels_ch3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/in_width' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/in_height' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/out_channels_ch1' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/out_channels_ch2' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/out_channels_ch3' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/out_width' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/out_height' to 'ap_vld'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/Y_scale' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/U_scale' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'yuv_filter/V_scale' to 'ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'yuv_filter' to 'ap_ctrl_hs'.
+INFO: [SYN 201-210] Renamed object name 'start_for_yuv_scale_U0' to 'start_for_yuv_scajbC' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_yuv2rgb_U0' to 'start_for_yuv2rgbkbM' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'yuv_filter'.
+INFO: [HLS 200-111]  Elapsed time: 0.633 seconds; current allocated memory: 111.752 MB.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w16_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w16_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w8_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w16_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'fifo_w16_d2_A' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_yuv_scajbC' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_yuv2rgbkbM' using Shift Registers.
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:04 ; elapsed = 00:00:18 . Memory (MB): peak = 167.309 ; gain = 110.309
+INFO: [SYSC 207-301] Generating SystemC RTL for yuv_filter.
+INFO: [VHDL 208-304] Generating VHDL RTL for yuv_filter.
+INFO: [VLOG 209-307] Generating Verilog RTL for yuv_filter.
+INFO: [HLS 200-112] Total elapsed time: 18.478 seconds; peak allocated memory: 111.752 MB.
