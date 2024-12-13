@@ -7,6 +7,8 @@
 #define K_HEIGH 3
 #define J_WIDTH I_WIDTH-K_WIDTH+1
 #define J_HEIGH I_HEIGH-K_HEIGH+1
+#define NUMBER long
+#define SIZE_NUMBER int
 
-void convolution2d(int I[I_HEIGH][I_WIDTH], int K[K_HEIGH][K_WIDTH], int J[J_HEIGH][J_WIDTH]);
+void convolution2d(NUMBER I[I_HEIGH][I_WIDTH], NUMBER K[K_HEIGH][K_WIDTH], NUMBER J[J_HEIGH][J_WIDTH]);
 #endif
