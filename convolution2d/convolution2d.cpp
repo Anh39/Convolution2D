@@ -46,6 +46,7 @@ void writeToMemmory(
 	printf("Start write memory\n");
 
 	SNUMBER size=(height-K_HEIGHT+1) * (width-K_WIDTH+1);
+WRITE_IMAGE_OUTPUT_LOOP:
 	for (SNUMBER i=0; i<MAX_J_HEIGHT*MAX_J_WIDTH;i++) {
 		if (i<size) {
 			NUMBER value = out_image.read();
@@ -69,7 +70,6 @@ void readWindow(
 {
 	printf("Start read window\n");
 
-	WINDOW window;
 	SNUMBER num_pixels = width*height;
 	SNUMBER num_iterations = width * height;
 	const SNUMBER max_iteration = MAX_J_WIDTH * MAX_J_HEIGHT;
@@ -77,6 +77,8 @@ void readWindow(
 	SNUMBER bufferMaxSize = (K_HEIGHT-1) * MAX_I_WIDTH + K_WIDTH;
 	NUMBER LineBuffer[bufferMaxSize];
 	SNUMBER ptr = 0;
+	WINDOW window;
+READ_WINDOW_LOOP:
 	for (SNUMBER it=0;it<num_iterations;it++) {
 #pragma HLS LOOP_TRIPCOUNT max=max_iteration
 		NUMBER new_pixel = image.read();
@@ -85,27 +87,27 @@ void readWindow(
 //		}
 		ptr = it%bufferSize;
 		LineBuffer[ptr] = new_pixel;
-		if (it >= bufferSize - 1) {
-			WINDOW window;
-			for (SNUMBER i=0;i<K_HEIGHT;i++) {
-				for (SNUMBER j=0;j<K_WIDTH;j++) {
-					SNUMBER index = ((ptr + 1 + (i*width + j)) % bufferSize);
-					window.pix[i][j] = LineBuffer[index];
-				}
+WINDOW_KERNEL_OUTER_LOOP:
+		for (SNUMBER i=0;i<K_HEIGHT;i++) {
+WINDOW_KERNEL_INNER_LOOP:
+			for (SNUMBER j=0;j<K_WIDTH-1;j++) {
+				window.pix[i][j] = window.pix[i][j+1];
+//				SNUMBER index = ((ptr + 1 + (i*width + j)) % bufferSize);
+//				window.pix[i][j] = LineBuffer[index];
 			}
-
-			if (it%width>=K_WIDTH-1) {
-//				printf("***********\n");
-//				for (SNUMBER i=0;i<K_HEIGHT;i++) {
-//					for (SNUMBER j=0;j<K_WIDTH;j++) {
-//						printf("%d ", window.pix[i][j]);
-//					}
-//					printf("\n");
-//				}
-				windows.write(window);
-			}
+			SNUMBER index = ((ptr + 1 + (i*width + K_WIDTH-1)) % bufferSize);
+			window.pix[i][K_WIDTH-1] = LineBuffer[index]; // Make last element use new_pixel
 		}
-
+		if (it >= bufferSize - 1 && it%width>=K_WIDTH-1) {
+//			printf("***********\n");
+//			for (SNUMBER i=0;i<K_HEIGHT;i++) {
+//				for (SNUMBER j=0;j<K_WIDTH;j++) {
+//					printf("%d ", window.pix[i][j]);
+//				}
+//				printf("\n");
+//			}
+			windows.write(window);
+		}
 	}
 }
 
@@ -119,13 +121,17 @@ void processConvolution2d(
 	printf("Start convolution\n");
 	const SNUMBER max_height = MAX_J_HEIGHT;
 	const SNUMBER max_width = MAX_J_WIDTH;
+CONVOLUTION_OUTER_LOOP:
 	for(SNUMBER i=0;i<height-K_HEIGHT+1;i++) {
 #pragma HLS LOOP_TRIPCOUNT max=max_height
+CONVOLUTION_INNER_LOOP:
 		for(SNUMBER j=0;j<width-K_WIDTH+1;j++) {
 #pragma HLS LOOP_TRIPCOUNT max=max_width
 			WINDOW w = windows.read();
 			NUMBER sum=0;
+CONVOLUTION_KERNEL_OUTER_LOOP:
 			for (int ik=0; ik<K_HEIGHT; ik++) {
+CONVOLUTION_KERNEL_INNER_LOOP:
 				for(int jk=0; jk<K_WIDTH; jk++) {
 					sum += w.pix[ik][jk]*kernel[ik][jk];
 				}
@@ -209,3 +215,28 @@ void convolution2d(
     printf("Windows left %d \n", windows.size());
 #endif
 }
+//void convolution2d(
+//        const NUMBER kernalSrc[K_HEIGHT*K_WIDTH],
+//        SNUMBER width,
+//        SNUMBER height,
+//        const NUMBER src[MAX_I_HEIGHT*MAX_I_WIDTH],
+//        NUMBER dst[MAX_J_WIDTH * MAX_J_HEIGHT])
+//{
+//    printf("\n");
+////    printf("Output size : %d %d %d\n",MAX_J_WIDTH, MAX_J_HEIGHT, MAX_J_WIDTH * MAX_J_HEIGHT);
+//    for (SNUMBER i=0; i<height-K_HEIGHT+1; i++) {
+//        for (SNUMBER j=0; j<width-K_WIDTH+1; j++) {
+//            NUMBER sum=0;
+//            for (SNUMBER ic=0; ic<K_HEIGHT;ic++) {
+//                for (SNUMBER jc=0; jc<K_WIDTH;jc++) {
+//                    sum+=src[(i+ic)*MAX_I_WIDTH+(j+jc)] * kernalSrc[ic*K_WIDTH+jc];
+//                }
+//            }
+//            SNUMBER index = i*MAX_J_WIDTH+j;
+//            dst[index] = sum;
+//        }
+//
+//    }
+//    printf("\n");
+//
+//}
