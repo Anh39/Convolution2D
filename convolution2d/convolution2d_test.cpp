@@ -64,8 +64,8 @@ int main() {
 	printf("---------------------\n");
 	printf("--------START--------\n");
 	printf("---------------------\n");
-	SNUMBER width = 5;
-	SNUMBER height = 10;
+	SNUMBER width = 100;
+	SNUMBER height = 100;
     const char* fileNameI = "input.txt";
     const char* fileNameK = "kernel.txt";
     const char* fileNameJ = "output.txt";
@@ -131,5 +131,3 @@ int main() {
     }
     return 0;
 }
-
-

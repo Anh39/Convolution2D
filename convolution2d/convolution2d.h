@@ -6,12 +6,12 @@
 typedef int NUMBER;
 typedef int SNUMBER;
 
-#define MAX_I_WIDTH 192
-#define MAX_I_HEIGHT 108
-#define K_WIDTH 2
-#define K_HEIGHT 3
-#define MAX_J_WIDTH 192
-#define MAX_J_HEIGHT 108
+#define MAX_I_WIDTH 100
+#define MAX_I_HEIGHT 100
+#define K_WIDTH 5
+#define K_HEIGHT 5
+#define MAX_J_WIDTH 98
+#define MAX_J_HEIGHT 98
 
  void convolution2d(
          const NUMBER kernalSrc[K_HEIGHT*K_WIDTH],
